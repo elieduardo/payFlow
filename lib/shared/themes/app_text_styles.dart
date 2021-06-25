@@ -30,7 +30,7 @@ class AppTextStyles {
   );
   static final trailingRegular = GoogleFonts.lexendDeca(
     fontSize: 16,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w300,
     color: AppColors.heading,
   );
   static final trailingBold = GoogleFonts.lexendDeca(
@@ -77,6 +77,11 @@ class AppTextStyles {
     fontSize: 15,
     fontWeight: FontWeight.w700,
     color: AppColors.background,
+  );
+  static final input = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.input,
   );
   static final captionBackground = GoogleFonts.inter(
     fontSize: 13,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pay_flow/shared/models/user_models.dart';
+import 'package:pay_flow/shared/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController {
@@ -12,8 +12,8 @@ class AuthController {
     if (user != null) {
       _isAuthenticated = true;
       saveUser(user);
-      user = _user;
-      Navigator.pushReplacementNamed(context, "/home");
+      _user = user;
+      Navigator.pushReplacementNamed(context, "/home", arguments: user);
     } else {
       _isAuthenticated = false;
       Navigator.pushReplacementNamed(context, "/login");

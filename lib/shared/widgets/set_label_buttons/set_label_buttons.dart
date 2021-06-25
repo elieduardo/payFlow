@@ -9,6 +9,8 @@ class SetLabelButton extends StatelessWidget {
   final String secundaryLabel;
   final VoidCallback secundaryOnTap;
   final bool enablePrimaryColor;
+  final bool enableSecundaryColor;
+
   const SetLabelButton({
     Key? key,
     required this.primaryLabel,
@@ -16,31 +18,48 @@ class SetLabelButton extends StatelessWidget {
     required this.secundaryLabel,
     required this.secundaryOnTap,
     this.enablePrimaryColor = false,
+    this.enableSecundaryColor = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.shape,
-      height: 56,
-      child: Row(
+      color: AppColors.background,
+      height: 57,
+      child: Column(
         children: [
-          Expanded(
-            child: LabelButton(
-              label: primaryLabel,
-              onTap: primaryOnTap,
-              style: enablePrimaryColor ? AppTextStyles.buttonPrimary : null,
-            ),
-          ),
-          VerticalDivider(
-            color: AppColors.stroke,
-            width: 1,
+          Divider(
+            height: 1,
             thickness: 1,
+            color: AppColors.stroke,
           ),
-          Expanded(
-            child: LabelButton(
-              label: secundaryLabel,
-              onTap: secundaryOnTap,
+          Container(
+            height: 56,
+            child: Row(
+              children: [
+                Expanded(
+                  child: LabelButton(
+                    label: primaryLabel,
+                    onTap: primaryOnTap,
+                    style:
+                        enablePrimaryColor ? AppTextStyles.buttonPrimary : null,
+                  ),
+                ),
+                VerticalDivider(
+                  color: AppColors.stroke,
+                  width: 1,
+                  thickness: 1,
+                ),
+                Expanded(
+                  child: LabelButton(
+                    label: secundaryLabel,
+                    onTap: secundaryOnTap,
+                    style: enableSecundaryColor
+                        ? AppTextStyles.buttonPrimary
+                        : null,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

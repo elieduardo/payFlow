@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pay_flow/shared/auth/auth_controller.dart';
-import 'package:pay_flow/shared/models/user_models.dart';
+import 'package:pay_flow/shared/models/user_model.dart';
 
 class LoginController {
   final authController = AuthController();
