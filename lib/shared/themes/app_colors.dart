@@ -4,6 +4,7 @@ class AppColors {
   static final primary = Color(0xFFFF941A);
   static final secundary = Color(0xFF585666);
   static final grey = Color(0xFF585666);
+  static final greyModalButton = Color(0xFF666666);
   static final delete = Color(0xFFE83F5B);
   static final heading = Color(0xFF585666);
   static final body = Color(0xFF706E7A);
@@ -11,4 +12,6 @@ class AppColors {
   static final shape = Color(0xFFFAFAFC);
   static final background = Color(0xFFFFFFFF);
   static final input = Color(0xFFB1B0B8);
+  static final modalGrey = Color(0xFFFAFAFC);
+  static final modalBorder = Color(0xFFE3E3E6);
 }

@@ -17,9 +17,17 @@ class LoginController {
       final user =
           UserModel(name: response!.displayName!, photoURL: response.photoUrl);
       authController.setUser(context, user);
-      print(response);
     } catch (error) {
       authController.setUser(context, null);
+    }
+  }
+
+  Future<void> googleLogout(BuildContext context) async {
+    GoogleSignIn _googleSignIn = GoogleSignIn();
+    try {
+      await _googleSignIn.signOut();
+    } catch (error) {
+      print("ERRO LOGOUT --> $error");
     }
   }
 }

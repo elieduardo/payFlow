@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_flow/shared/models/boleto_model.dart';
 import 'package:pay_flow/shared/themes/app_colors.dart';
 import 'package:pay_flow/shared/themes/app_text_styles.dart';
 import 'package:pay_flow/shared/widgets/boleto_list/boleto_list_controller.dart';
@@ -12,7 +13,8 @@ class ExtractPage extends StatefulWidget {
 }
 
 class _ExtractPageState extends State<ExtractPage> {
-  final controller = BoletoListController();
+  final controller = BoletoListController(onlyPayed: true);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -25,10 +27,18 @@ class _ExtractPageState extends State<ExtractPage> {
               right: 24,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Meus extratos",
                   style: AppTextStyles.titleBoldHeading,
+                ),
+                ValueListenableBuilder<List<BoletoModel>>(
+                  valueListenable: controller.boletosNotifier,
+                  builder: (_, boletos, __) => Text(
+                    "${boletos.length <= 1 ? "${boletos.length} pago" : "${boletos.length} pagos"}",
+                    style: AppTextStyles.captionBody,
+                  ),
                 ),
               ],
             ),

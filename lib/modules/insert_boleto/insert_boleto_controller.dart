@@ -24,14 +24,34 @@ class InsertBoletoController {
 
   Future<void> saveBoleto() async {
     final instance = await SharedPreferences.getInstance();
+    model.value = model.value!.replaceAll("R\$", "R\$ ");
     final boletos = instance.getStringList("boletos") ?? <String>[];
     boletos.insert(0, model.toJson());
+    await instance.setStringList("boletos", boletos);
+
+    return;
+  }
+
+  Future<void> updateBoleto(BoletoModel boleto) async {
+    final instance = await SharedPreferences.getInstance();
+    final boletos = instance.getStringList("boletos") ?? <String>[];
+    boletos.removeWhere((element) => element == boleto.toJson());
+    boleto.isPayed = true;
+    boletos.insert(0, boleto.toJson());
+    await instance.setStringList("boletos", boletos);
+    return;
+  }
+
+  Future<void> deleteBoleto(BoletoModel boleto) async {
+    final instance = await SharedPreferences.getInstance();
+    final boletos = instance.getStringList("boletos") ?? <String>[];
+    boletos.removeWhere((element) => element == boleto.toJson());
     await instance.setStringList("boletos", boletos);
     return;
   }
 
   void onChange(
-      {String? name, String? dueDate, double? value, String? barcode}) {
+      {String? name, String? dueDate, String? value, String? barcode}) {
     model = model.copyWith(
       name: name,
       dueDate: dueDate,
