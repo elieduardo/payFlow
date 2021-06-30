@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: IconButton(
                   onPressed: () async {
-                    Navigator.pushNamed(context, "/barcode_scanner").then(
+                    await Navigator.pushNamed(context, "/barcode_scanner").then(
                       (value) => setState(() {}),
                     );
                   },

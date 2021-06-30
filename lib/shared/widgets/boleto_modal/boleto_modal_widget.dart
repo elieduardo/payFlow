@@ -60,10 +60,11 @@ class ModalBoletoWidget {
                   text: "Sim",
                   enableBackgroundColor: true,
                   onTap: () async {
-                    controller.updateBoleto(data);
+                    await controller.updateBoleto(data);
                     UserModel user =
                         await AuthController().getCurrentUser(context);
-                    Navigator.pushReplacementNamed(context, "/home",
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/home', (Route<dynamic> route) => false,
                         arguments: user);
                   },
                 ),
@@ -71,9 +72,10 @@ class ModalBoletoWidget {
             ),
             GestureDetector(
               onTap: () async {
-                controller.deleteBoleto(data);
+                await controller.deleteBoleto(data);
                 UserModel user = await AuthController().getCurrentUser(context);
-                Navigator.pushReplacementNamed(context, "/home",
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/home', (Route<dynamic> route) => false,
                     arguments: user);
               },
               child: Container(
